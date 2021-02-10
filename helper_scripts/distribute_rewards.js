@@ -17,7 +17,7 @@ async function usdToAr(usd) {
 };
 
 
-async function xyz(usd, distribution = usdToAr) {
+async function filterHolders(usd, distribution = usdToAr) {
 	
 	  const ar_amount = await distribution(usd)
 	
@@ -55,7 +55,7 @@ async function xyz(usd, distribution = usdToAr) {
 
 async function distribute_rewards(usd) {
 
-	const rewards = await xyz(usd)
+	const rewards = await filterHolders(usd)
 
 	for ( holder of rewards.entries() ) {
 
@@ -76,7 +76,7 @@ async function distribute_rewards(usd) {
 }
 
 
-distribute_rewards(10)
+distribute_rewards(usd_integer)
 
 
 
